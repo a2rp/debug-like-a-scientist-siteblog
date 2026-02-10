@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Debug Like a Scientist - A Practical Workflow</title>
+        <link rel="stylesheet" href="./style.css" />
+        <meta
+            name="description"
+            content="A practical debugging workflow that helps you find root causes faster and ship reliable fixes."
+        />
+    </head>
+
+    <body>
+        <div class="wrap">
+            <section class="hero">
+                <div class="heroImg">
+                    <img
+                        src="main_image.png"
+                        alt="Debug Like a Scientist - hero image"
+                    />
+                </div>
+
+                <div class="heroBody">
+                    <div class="kicker">
+                        <span>Blog</span>
+                        <span>-</span>
+                        <span>Debugging Workflow</span>
+                        <span>-</span>
+                        <span>Frontend and Backend</span>
+                    </div>
+
+                    <h1 class="title">
+                        Debug Like a Scientist - A Practical Workflow
+                    </h1>
+
+                    <p class="subtitle">
+                        Debugging is not magic. It is a controlled experiment.
+                        The goal is not to stare harder at code - it is to
+                        reduce uncertainty fast, isolate the cause, and ship a
+                        fix that does not come back to haunt you.
+                    </p>
+
+                    <div class="meta">
+                        <div class="pill" title="Publish date">
+                            <span>Published</span>
+                            <span>-</span>
+                            <span id="publishedText">-</span>
+                        </div>
+
+                        <div class="pill" title="Last updated date">
+                            <span>Last updated</span>
+                            <span>-</span>
+                            <span id="updatedText">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content">
+                <div class="contentInner">
+                    <h2>What most people do wrong</h2>
+                    <p>
+                        Most debugging fails because of one classic sin -
+                        changing multiple things at once. That turns your system
+                        into a fog machine. The fix looks random because it
+                        basically was.
+                    </p>
+
+                    <div class="callout">
+                        Rule - One hypothesis at a time. One change at a time.
+                        Otherwise you are not debugging - you are gambling.
+                    </div>
+
+                    <h2>The 6 step workflow</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="stepHead">
+                                <div class="stepTitle">
+                                    1 - Reproduce reliably
+                                </div>
+                                <div class="stepTag">Make it repeatable</div>
+                            </div>
+                            <p>
+                                Write the shortest set of steps that triggers
+                                the bug. If you cannot reproduce, you cannot
+                                prove a fix.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="stepHead">
+                                <div class="stepTitle">
+                                    2 - Reduce the surface area
+                                </div>
+                                <div class="stepTag">Smallest failing case</div>
+                            </div>
+                            <p>
+                                Strip the problem down. Remove features. Remove
+                                data. Remove async. Keep deleting until the bug
+                                disappears - then add the last thing back.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="stepHead">
+                                <div class="stepTitle">
+                                    3 - Make a hypothesis
+                                </div>
+                                <div class="stepTag">Write it in one line</div>
+                            </div>
+                            <p>
+                                "I think X happens because Y". If you cannot
+                                write it, you do not have a hypothesis - you
+                                have vibes.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="stepHead">
+                                <div class="stepTitle">
+                                    4 - Add one instrument
+                                </div>
+                                <div class="stepTag">
+                                    Logs - metrics - breakpoints
+                                </div>
+                            </div>
+                            <p>
+                                Use logs like a microscope. Place them near
+                                boundaries - input, output, network, state
+                                transitions, and errors.
+                            </p>
+
+                            <pre><code>// Example log pattern
+console.log("[auth] token present", Boolean(token));
+console.log("[api] status", res.status, "timeMs", elapsedMs);
+console.log("[ui] state", { loading, error, items: items.length });</code></pre>
+                        </div>
+
+                        <div class="step">
+                            <div class="stepHead">
+                                <div class="stepTitle">
+                                    5 - Run a controlled test
+                                </div>
+                                <div class="stepTag">
+                                    Change exactly one thing
+                                </div>
+                            </div>
+                            <p>
+                                Toggle one variable. Compare before and after.
+                                That is how you build confidence instead of
+                                guessing.
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <div class="stepHead">
+                                <div class="stepTitle">6 - Lock the fix</div>
+                                <div class="stepTag">Prevent regressions</div>
+                            </div>
+                            <p>
+                                Add a small test or a guard. At minimum, add a
+                                comment near the fix stating what it prevents.
+                                Future you will thank present you.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h2>Checklist you can reuse</h2>
+                    <ul>
+                        <li>Can I reproduce it in under 30 seconds</li>
+                        <li>Did I reduce to the smallest failing example</li>
+                        <li>Did I write one hypothesis sentence</li>
+                        <li>Did I change only one thing</li>
+                        <li>
+                            Did I confirm the fix with the original repro steps
+                        </li>
+                        <li>Did I add a guard to prevent the same bug</li>
+                    </ul>
+
+                    <div class="footer">
+                        Built for siteblog repos - add topic "siteblog" and set
+                        GitHub Pages homepage.
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script>
+            const fmt = (d) => {
+                const months = [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",
+                ];
+                const pad2 = (n) => (n < 10 ? "0" + n : String(n));
+                const mon = months[d.getMonth()] || "Jan";
+                const day = pad2(d.getDate());
+                const year = d.getFullYear();
+                const hh = pad2(d.getHours());
+                const mm = pad2(d.getMinutes());
+                const ss = pad2(d.getSeconds());
+                return (
+                    mon +
+                    " " +
+                    day +
+                    ", " +
+                    year +
+                    " " +
+                    hh +
+                    ":" +
+                    mm +
+                    ":" +
+                    ss +
+                    " hrs"
+                );
+            };
+
+            const now = new Date();
+            document.getElementById("publishedText").textContent = fmt(now);
+            document.getElementById("updatedText").textContent = fmt(now);
+        </script>
+    </body>
+</html>
