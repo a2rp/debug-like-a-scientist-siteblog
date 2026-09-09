@@ -1,0 +1,8 @@
+﻿{
+  "name": "debug-like-a-scientist-siteblog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A practical guide to debugging with scientific thinking.",
+  "scripts": { "deploy": "gh-pages -d ." },
+  "devDependencies": { "gh-pages": "^6.3.0" }
+}
