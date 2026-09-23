@@ -5,18 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Debug Like a Scientist - A Practical Workflow</title>
         <link rel="stylesheet" href="./style.css" />
-
-        <!-- favicon -->
-        <link rel="icon" href="/favicon.ico" />
-        
+        <link rel="icon" type="image/x-icon" href="./public/favicon.ico" />
 
         <meta
             name="description"
             content="A practical debugging workflow that helps you find root causes faster and ship reliable fixes."
         />
+        <meta name="author" content="Ashish Ranjan" />
+        <meta name="theme-color" content="#050509" />
+        <meta property="og:title" content="Debug Like a Scientist" />
+        <meta property="og:description" content="A practical debugging workflow for reproducing issues, testing hypotheses, and preventing regressions." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/" />
+        <meta property="og:image" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/preview.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Debug Like a Scientist" />
+        <meta name="twitter:description" content="A practical debugging workflow for reproducing issues, testing hypotheses, and preventing regressions." />
+        <meta name="twitter:image" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/preview.png" />
     </head>
 
     <body>
+        <header class="siteHeader">
+            <a class="siteBrand" href="./" aria-label="Debug Like a Scientist home">
+                <img src="./public/logo.png" alt="Ashish Ranjan logo" />
+                <span>Debug Like a Scientist</span>
+            </a>
+            <a class="headerLink" href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer">More notes</a>
+        </header>
         <div class="wrap">
             <section class="hero">
                 <div class="heroImg">
@@ -202,67 +217,30 @@ console.log("[ui] state", { loading, error, items: items.length });</code></pre>
                                 </div>
 
                                 <div class="footerLinks">
-                                    <a
-                                        class="footerLink"
-                                        href="https://www.ashishranjan.net"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        title="Website"
-                                    >
-                                        Website
-                                    </a>
-
-                                    <a
-                                        class="footerLink"
-                                        href="https://www.ashishranjan.net/blog"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        title="Blog page"
-                                    >
-                                        Blog
-                                    </a>
-
-                                    <a
-                                        class="footerLink"
-                                        href="https://github.com/a2rp"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        title="GitHub"
-                                    >
-                                        GitHub
-                                    </a>
-
-                                    <a
-                                        class="footerLink"
-                                        href="https://www.linkedin.com/in/aashishranjan"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        title="LinkedIn"
-                                    >
-                                        LinkedIn
-                                    </a>
-
-                                    <a
-                                        class="footerLink"
-                                        href="https://www.facebook.com/theash.ashish/"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        title="Facebook"
-                                    >
-                                        Facebook
-                                    </a>
+                                    <a class="footerLink" href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio" title="Portfolio">◎</a>
+                                    <a class="footerLink" href="https://github.com/a2rp" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">◉</a>
+                                    <a class="footerLink" href="https://codepen.io/ash1198" target="_blank" rel="noopener noreferrer" aria-label="CodePen" title="CodePen">⌘</a>
+                                    <a class="footerLink" href="https://www.linkedin.com/in/aashishranjan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">in</a>
+                                    <a class="footerLink" href="https://www.facebook.com/theash.ashish/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">f</a>
+                                    <a class="footerLink" href="https://www.youtube.com/@ashishranjan-ashz?sub_confirmation=1" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">▶</a>
+                                    <a class="footerLink" href="mailto:ash.ranjan09@gmail.com" aria-label="Email" title="Email">✉</a>
+                                    <a class="footerLink" href="https://a2rp-donation-page.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Support" title="Support">♥</a>
+                                    <a class="footerLink" href="https://buymeacoffee.com/a2rp" target="_blank" rel="noopener noreferrer" aria-label="Buy Me a Coffee" title="Buy Me a Coffee">☕</a>
+                                    <a class="footerLink" href="https://www.patreon.com/a2rp" target="_blank" rel="noopener noreferrer" aria-label="Patreon" title="Patreon">★</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="footerBottom">
-                            Built for siteblog repos - add topic "siteblog" and
-                            set GitHub Pages homepage.
+                            Copyright © <span id="currentYear"></span>
+                            <a href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer">Ashish Ranjan</a>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+
+        <button id="topBtn" class="topBtn" type="button" aria-label="Scroll to top" title="Scroll to top">↑</button>
 
         <script>
             const fmt = (d) => {
@@ -306,6 +284,10 @@ console.log("[ui] state", { loading, error, items: items.length });</code></pre>
             const now = new Date();
             document.getElementById("publishedText").textContent = fmt(now);
             document.getElementById("updatedText").textContent = fmt(now);
+            document.getElementById("currentYear").textContent = now.getFullYear();
+            document.getElementById("topBtn").addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
         </script>
     </body>
 </html>
