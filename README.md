@@ -2,7 +2,7 @@
 
 A practical static blog article about debugging with scientific thinking: reproduce the issue, reduce the failing surface, test one hypothesis, and prevent regressions.
 
-![Debug Like a Scientist screenshot](screenshot.png)
+![Debug Like a Scientist screenshot](./screenshot.jpg)
 
 ## Features
 
