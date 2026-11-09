@@ -38,6 +38,22 @@ body {
     color: var(--text);
 }
 
+.skipLink {
+    position: fixed;
+    top: -64px;
+    left: 16px;
+    z-index: 30;
+    padding: 10px 12px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+}
+
+.skipLink:focus-visible {
+    top: 12px;
+}
+
 a {
     color: var(--link);
     text-decoration: none;
@@ -45,6 +61,12 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
 }
 
 .wrap {
@@ -203,6 +225,7 @@ li {
 }
 
 .stepTitle {
+    margin: 0;
     color: rgba(255, 255, 255, 0.92);
     font-size: 13px;
     letter-spacing: 0.15px;

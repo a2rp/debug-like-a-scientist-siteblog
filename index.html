@@ -17,14 +17,15 @@
         <meta property="og:description" content="A practical debugging workflow for reproducing issues, testing hypotheses, and preventing regressions." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/" />
-        <meta property="og:image" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/preview.png" />
+        <meta property="og:image" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/public/preview.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Debug Like a Scientist" />
         <meta name="twitter:description" content="A practical debugging workflow for reproducing issues, testing hypotheses, and preventing regressions." />
-        <meta name="twitter:image" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/preview.png" />
+        <meta name="twitter:image" content="https://a2rp.github.io/debug-like-a-scientist-siteblog/public/preview.png" />
     </head>
 
     <body>
+        <a class="skipLink" href="#mainContent">Skip to article</a>
         <header class="siteHeader">
             <a class="siteBrand" href="./" aria-label="Debug Like a Scientist home">
                 <img src="./public/logo.png" alt="Ashish Ranjan logo" />
@@ -32,12 +33,12 @@
             </a>
             <a class="headerLink" href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer">More notes</a>
         </header>
-        <div class="wrap">
+        <main class="wrap" id="mainContent" tabindex="-1">
             <section class="hero">
                 <div class="heroImg">
                     <img
                         src="main_image.webp"
-                        alt="Debug Like a Scientist - hero image"
+                        alt="Illustration for a scientific debugging workflow"
                     />
                 </div>
 
@@ -65,13 +66,13 @@
                         <div class="pill" title="Publish date">
                             <span>Published</span>
                             <span>-</span>
-                            <span id="publishedText">-</span>
+                            <span>Feb 10, 2026</span>
                         </div>
 
                         <div class="pill" title="Last updated date">
                             <span>Last updated</span>
                             <span>-</span>
-                            <span id="updatedText">-</span>
+                            <span>Nov 09, 2026</span>
                         </div>
                     </div>
                 </div>
@@ -81,10 +82,9 @@
                 <div class="contentInner">
                     <h2>What most people do wrong</h2>
                     <p>
-                        Most debugging fails because of one classic sin -
-                        changing multiple things at once. That turns your system
-                        into a fog machine. The fix looks random because it
-                        basically was.
+                        A common debugging trap is changing multiple things at once.
+                        That makes it harder to know which change mattered,
+                        so a fix can look random even when one change solved it.
                     </p>
 
                     <div class="callout">
@@ -96,37 +96,40 @@
                     <div class="steps">
                         <div class="step">
                             <div class="stepHead">
-                                <div class="stepTitle">
+                                <h3 class="stepTitle">
                                     1 - Reproduce reliably
-                                </div>
+                                </h3>
                                 <div class="stepTag">Make it repeatable</div>
                             </div>
                             <p>
-                                Write the shortest set of steps that triggers
-                                the bug. If you cannot reproduce, you cannot
-                                prove a fix.
+                                Write the shortest reliable steps that trigger
+                                the issue. A repeatable reproduction gives you
+                                a baseline for checking whether the fix works.
                             </p>
                         </div>
 
                         <div class="step">
                             <div class="stepHead">
-                                <div class="stepTitle">
+                                <h3 class="stepTitle">
                                     2 - Reduce the surface area
-                                </div>
+                                </h3>
                                 <div class="stepTag">Smallest failing case</div>
                             </div>
                             <p>
-                                Strip the problem down. Remove features. Remove
-                                data. Remove async. Keep deleting until the bug
-                                disappears - then add the last thing back.
+                                Reduce the problem while preserving the
+                                conditions that trigger it. Remove irrelevant
+                                features or data one at a time; keep timing and
+                                async behavior when they are part of the
+                                failure. When the issue stops, restore the
+                                last change to confirm the cause.
                             </p>
                         </div>
 
                         <div class="step">
                             <div class="stepHead">
-                                <div class="stepTitle">
+                                <h3 class="stepTitle">
                                     3 - Make a hypothesis
-                                </div>
+                                </h3>
                                 <div class="stepTag">Write it in one line</div>
                             </div>
                             <p>
@@ -138,9 +141,9 @@
 
                         <div class="step">
                             <div class="stepHead">
-                                <div class="stepTitle">
+                                <h3 class="stepTitle">
                                     4 - Add one instrument
-                                </div>
+                                </h3>
                                 <div class="stepTag">
                                     Logs - metrics - breakpoints
                                 </div>
@@ -159,9 +162,9 @@ console.log("[ui] state", { loading, error, items: items.length });</code></pre>
 
                         <div class="step">
                             <div class="stepHead">
-                                <div class="stepTitle">
+                                <h3 class="stepTitle">
                                     5 - Run a controlled test
-                                </div>
+                                </h3>
                                 <div class="stepTag">
                                     Change exactly one thing
                                 </div>
@@ -175,13 +178,15 @@ console.log("[ui] state", { loading, error, items: items.length });</code></pre>
 
                         <div class="step">
                             <div class="stepHead">
-                                <div class="stepTitle">6 - Lock the fix</div>
+                                <h3 class="stepTitle">6 - Lock the fix</h3>
                                 <div class="stepTag">Prevent regressions</div>
                             </div>
                             <p>
-                                Add a small test or a guard. At minimum, add a
-                                comment near the fix stating what it prevents.
-                                Future you will thank present you.
+                                Add a regression test for the original
+                                reproduction where feasible. If an automated
+                                test cannot capture the behavior, add a guard
+                                or monitoring check and document what failure
+                                it catches.
                             </p>
                         </div>
                     </div>
@@ -238,55 +243,22 @@ console.log("[ui] state", { loading, error, items: items.length });</code></pre>
                     </div>
                 </div>
             </section>
-        </div>
+        </main>
 
         <button id="topBtn" class="topBtn" type="button" aria-label="Scroll to top" title="Scroll to top">↑</button>
 
         <script>
-            const fmt = (d) => {
-                const months = [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul",
-                    "Aug",
-                    "Sep",
-                    "Oct",
-                    "Nov",
-                    "Dec",
-                ];
-                const pad2 = (n) => (n < 10 ? "0" + n : String(n));
-                const mon = months[d.getMonth()] || "Jan";
-                const day = pad2(d.getDate());
-                const year = d.getFullYear();
-                const hh = pad2(d.getHours());
-                const mm = pad2(d.getMinutes());
-                const ss = pad2(d.getSeconds());
-                return (
-                    mon +
-                    " " +
-                    day +
-                    ", " +
-                    year +
-                    " " +
-                    hh +
-                    ":" +
-                    mm +
-                    ":" +
-                    ss +
-                    " hrs"
-                );
-            };
+            document.getElementById("currentYear").textContent =
+                new Date().getFullYear();
 
-            const now = new Date();
-            document.getElementById("publishedText").textContent = fmt(now);
-            document.getElementById("updatedText").textContent = fmt(now);
-            document.getElementById("currentYear").textContent = now.getFullYear();
             document.getElementById("topBtn").addEventListener("click", () => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                const prefersReducedMotion = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                ).matches;
+                window.scrollTo({
+                    top: 0,
+                    behavior: prefersReducedMotion ? "auto" : "smooth",
+                });
             });
         </script>
     </body>
